@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
 
-const MailBody = ({ sidebarOpen }) => {
+const MailBody = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { emails } = useContext(AppContext);
@@ -12,9 +12,7 @@ const MailBody = ({ sidebarOpen }) => {
 
   return (
     <div
-      className={`p-8 ${
-        sidebarOpen ? "w-[85vw]" : "w-full"
-      } bg-white rounded shadow mx-auto`}>
+      className={'p-8  bg-white rounded shadow mx-auto'}>
       <button
         onClick={() => navigate(-1)}
         className="mb-4 px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded">

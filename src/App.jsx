@@ -1,10 +1,10 @@
 import { Routes, Route } from "react-router-dom";
 import React, { useState } from "react";
-import Header from "./components/Header.jsx";
-import Sidebar from "./components/Sidebar.jsx";
-import Home from "./pages/Home.jsx";
-import MailBody from "./pages/MailBody.jsx";
-import NewMail from "./pages/NewMail.jsx";
+import Header from "./components/Header";
+import Sidebar from "./components/Sidebar";
+import Home from "./pages/Home";
+import MailBody from "./pages/MailBody";
+import SendMail from "./pages/SendMail";
 
 const App = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -18,11 +18,8 @@ const App = () => {
           <div className={sidebarOpen ? "w-[85vw]" : "w-full"}>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route
-                path="/mailbody/:id"
-                element={<MailBody sidebarOpen={sidebarOpen} />}
-              />
-              <Route path="/newmail" element={<NewMail />} />
+              <Route path="/mailbody/:id" element={<MailBody />} />
+              <Route path="/sendmail" element={<SendMail />} />
             </Routes>
           </div>
         </div>

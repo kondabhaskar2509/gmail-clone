@@ -2,11 +2,10 @@ import React, { useContext, useState } from "react";
 import { AppContext } from "../context/AppContext";
 import { useNavigate } from "react-router-dom";
 
-const NewMail = () => {
-  const { sendMail } = useContext(AppContext);
+const SendMail = () => {
+  const { sendMail ,setStatus } = useContext(AppContext);
   const navigate = useNavigate();
   const [form, setForm] = useState({
-    from: "You",
     to: "",
     subject: "",
     body: "",
@@ -18,6 +17,7 @@ const NewMail = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     sendMail(form);
+    setStatus("sent");
     navigate("/");
   };
 
@@ -26,7 +26,13 @@ const NewMail = () => {
       <form
         onSubmit={handleSubmit}
         className="bg-white p-8 rounded-lg shadow-lg w-full max-w-2xl">
+
         <h2 className="text-2xl font-bold mb-6">Compose Mail</h2>
+      <button
+        onClick={() => navigate(-1)}
+        className="mb-4 px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded">
+        Back
+      </button>
         <div className="mb-4">
           <label className="block mb-1 font-semibold">To</label>
           <input
@@ -70,4 +76,4 @@ const NewMail = () => {
   );
 };
 
-export default NewMail;
+export default SendMail;
